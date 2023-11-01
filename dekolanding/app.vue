@@ -4,9 +4,8 @@ import Header from "~/src/components/header.vue";
 </script>
 
 <template>
-  <div>
   <Header/>
-  </div>
+
 </template>
 
 <style>
