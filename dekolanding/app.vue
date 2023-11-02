@@ -1,16 +1,11 @@
 
-<script setup lang="ts">
-import Header from "~/src/components/header.vue";
-</script>
-
 <template>
-  <Header/>
-
+  <NuxtLayout>
+    <NuxtPage/>
+  </NuxtLayout>
 </template>
-
 <style>
 *{
-
   background: #000000;
 }
 </style>

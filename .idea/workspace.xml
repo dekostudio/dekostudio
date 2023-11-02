@@ -5,12 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="546e6e10-1ac7-4f7a-aaac-1cf327cfbde3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/icons/eixt.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dekostudio.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/app/router.options.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/layouts/default.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/gifs/ezgif.com-gif-maker.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/mainSectionBackground/D.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/mainSectionBackground/E.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/mainSectionBackground/k.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/mainSectionBackground/o.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/mockPics/mockPick.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/components/Pages/main.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dekolanding/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/app.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/nuxt.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/src/assets/icons/eixt.svg" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/assets/icons/eixt.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dekolanding/src/components/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/header.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +30,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Composition API Component" />
         <option value="CSS File" />
+        <option value="TypeScript File" />
+        <option value="Vue Composition API Component" />
       </list>
     </option>
   </component>
@@ -49,7 +59,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/OSPanel/domains/dekostudio",
+    "last_opened_file_path": "D:/OSPanel/domains/dekostudio/dekolanding/src/assets/gifs",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -66,11 +76,15 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets\gifs" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets\icons" />
-      <recent name="D:\dekostudio\dekolanding\src\assets\font" />
-      <recent name="D:\dekostudio\dekolanding\src\assets\icons" />
-      <recent name="D:\dekostudio\dekolanding\src\components" />
+      <recent name="D:\OSPanel\domains\dekostudio\dekolanding" />
+      <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets\mainSectionBackground" />
+      <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets" />
+      <recent name="D:\OSPanel\domains\dekostudio\dekolanding\public" />
+      <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets\mockPics" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -83,6 +97,8 @@
       <updated>1698832300190</updated>
       <workItem from="1698832301201" duration="6263000" />
       <workItem from="1698844565777" duration="9061000" />
+      <workItem from="1698853880431" duration="354000" />
+      <workItem from="1698914514479" duration="13424000" />
     </task>
     <servers />
   </component>

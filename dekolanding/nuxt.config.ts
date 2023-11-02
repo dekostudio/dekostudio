@@ -6,6 +6,6 @@ export default defineNuxtConfig({
     families:{
       Roboto:true,
     }
-  }
+  },
 })
 
