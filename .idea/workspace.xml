@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="546e6e10-1ac7-4f7a-aaac-1cf327cfbde3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/dekolanding/app/router.options.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dekolanding/layouts/default.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/gifs/ezgif.com-gif-maker.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/mainSectionBackground/D.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/mainSectionBackground/E.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/mainSectionBackground/k.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/mainSectionBackground/o.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/mockPics/mockPick.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dekolanding/src/components/Pages/main.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/app.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/nuxt.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/src/assets/icons/eixt.svg" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/assets/icons/eixt.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/src/components/Pages/main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/Pages/main.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dekolanding/src/components/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/header.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,6 +53,8 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Smugg\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
     "ts.external.directory.path": "D:\\WebStorm 2023.1.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   },
@@ -99,6 +88,8 @@
       <workItem from="1698844565777" duration="9061000" />
       <workItem from="1698853880431" duration="354000" />
       <workItem from="1698914514479" duration="13424000" />
+      <workItem from="1698935157388" duration="199000" />
+      <workItem from="1698944894964" duration="1150000" />
     </task>
     <servers />
   </component>

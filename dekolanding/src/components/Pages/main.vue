@@ -1,13 +1,9 @@
-<script  lang="ts">
-export default defineComponent({
-})
+<script lang="ts">
+export default defineComponent({});
 </script>
 
 <template>
-<div>
-</div>
+  <div></div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
