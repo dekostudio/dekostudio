@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="546e6e10-1ac7-4f7a-aaac-1cf327cfbde3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/app.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/public/favicon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dekolanding/src/components/Pages/main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/Pages/main.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dekolanding/src/components/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/header.vue" afterDir="false" />
     </list>
@@ -37,42 +39,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/OSPanel/domains/dekostudio/dekolanding/src/assets/gifs",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Smugg\\AppData\\Roaming\\npm\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "D:\\WebStorm 2023.1.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/OSPanel/domains/dekostudio/dekolanding/src/assets/gifs&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Smugg\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\WebStorm 2023.1.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "vue.recent.templates": [
-      "Vue Composition API Component"
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Composition API Component&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets\gifs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\domains\dekostudio\dekolanding\public" />
       <recent name="D:\OSPanel\domains\dekostudio\dekolanding" />
       <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets\mainSectionBackground" />
       <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets" />
-      <recent name="D:\OSPanel\domains\dekostudio\dekolanding\public" />
       <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets\mockPics" />
     </key>
   </component>
@@ -90,6 +92,7 @@
       <workItem from="1698914514479" duration="13424000" />
       <workItem from="1698935157388" duration="199000" />
       <workItem from="1698944894964" duration="1150000" />
+      <workItem from="1698994691647" duration="10110000" />
     </task>
     <servers />
   </component>

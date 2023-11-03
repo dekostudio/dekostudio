@@ -8,31 +8,33 @@ export default defineComponent({
           name: "UX/UI",
           link: "#",
           description:
-            "Разрабатываем и поддерживаем средние и крупные проекты, " +
-            "держа руку на пульсе современных технологий.",
+            "Адаптивный веб-дизайн, создание сайтов, одинаково эффективных как для доступа с компьютеров, " +
+            "так и с мобильных устройств от 50 тысяч рублей",
           img: "/_nuxt/src/assets/mockPics/mockPick.png",
         },
         {
           name: "Разработка платформы",
           link: "#",
           description:
-            "LOrem и поддерживаем средние и крупные проекты, " +
-            "держа руку на пульсе современных технологий.",
+            "Платформы, создание приложении для телефона разного вида платформы ios, android и десктоп. " +
+            "От 250 тысяч рублей шабланного плана, " +
+            "и от 2 миллионов рублей за оригинального и сложного проекта",
           img: "/_nuxt/src/assets/mockPics/mockPick.png",
         },
         {
           name: "Разработка сайтов",
           link: "#",
           description:
-            "Разрабатываем и hyo средние и крупные проекты, " +
-            "держа руку на пульсе современных технологий.",
+            "Интернет магазин. От 100 тысяч рублей шабланного плана, и от миллиона рублей за оригинального " +
+            "и сложного проекта .Обновление старых корпоративных сайтов, придание им современного вида, " +
+            "свойств и технических возможностей от 45 тысячи рублей",
           img: "/_nuxt/src/assets/mockPics/mockPick.png",
         },
         {
           name: "Разработка чат-ботов",
           link: "#",
           description:
-            "gpod и поддерживаем средние и крупные проекты, " +
+            "Pазработка и поддерживаем средние и крупные проекты, " +
             "держа руку на пульсе современных технологий.",
           img: "/_nuxt/src/assets/mockPics/mockPick.png",
         },
@@ -108,6 +110,13 @@ export default defineComponent({
   box-sizing: border-box;
   color: #ffffff;
   font-family: Roboto;
+  z-index: 2;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .navbar {
@@ -126,7 +135,6 @@ export default defineComponent({
   display: flex;
   padding-top: 0.2rem;
   margin-left: 3.25rem;
-
   & button {
     border: none;
     background: #ffffff;
@@ -134,13 +142,11 @@ export default defineComponent({
     width: 3rem;
     height: 3rem;
     padding-top: 0.3rem;
-
     &:hover {
       transition: all 300ms ease-out;
       transform: scale(110%);
     }
   }
-
   & button img {
     background: none;
   }
@@ -149,13 +155,11 @@ export default defineComponent({
 .contact-item {
   display: flex;
   padding-top: 0.2rem;
-
   & button {
     border: 1px solid white;
     width: 12rem;
     font-size: 1.1rem;
     height: 2.7rem;
-
     &:hover {
       transition: all 300ms ease-out;
       transform: scale(110%);
@@ -172,6 +176,8 @@ export default defineComponent({
   background: #ffffff;
   top: 0;
   left: 0;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .navMenu-components {
@@ -180,9 +186,9 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   gap: 5rem;
-  width: 100vw;
-  height: auto;
 
+  height: auto;
+  overflow-x: hidden;
   padding-bottom: 4rem;
 
   & .navMenu-btnContainer {
@@ -246,15 +252,17 @@ export default defineComponent({
     background: none;
     color: black;
     font-size: 1.7rem;
-    width: 620px;
+    width: 700px;
     padding-top: 5rem;
     height: auto;
     line-height: 2.5rem;
+    padding-bottom: 2rem;
   }
 
   & .infoImg-wrapper {
     background: none;
-    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
 
     & img {
       background: none;
