@@ -9,5 +9,3 @@
 ## **Featuring** showcase
 ![dd](https://github.com/dekostudio/dekostudio/assets/102694816/f0e96eed-47b1-4a8f-8bc8-2b1e8d012927)
 ![ezgif com-gif-maker](https://github.com/dekostudio/dekostudio/assets/102694816/52344012-27b2-439e-80f4-3a9d8b0cbe36)
-<style>H1{color:Blue;}</style>
-<style>H2{color:Orange}</style>
