@@ -45,9 +45,7 @@ export default defineComponent({
   },
   methods: {
     CheckId(id: number): void {
-      console.log(id);
       this.data = this.navItems[id];
-      console.log(this.data);
       this.hoveredData = true;
     },
   },
@@ -86,12 +84,17 @@ export default defineComponent({
           </div>
 
           <div class="showcase" v-if="!hoveredData">
-            <img src="../assets/gifs/ezgif.com-gif-maker.gif" />
+            <img src="../assets/gifs/ezgif.com-gif-maker%20(3).gif" />
           </div>
           <div class="additionalInfo" v-if="hoveredData">
             <transition name="dataShowUp" appear>
               <div class="infoComponents" v-show="data">
-                <p>{{ data.description }}</p>
+                <div v-if="hoveredData" class="infoText-wrapper">
+                  <h1>
+                    {{ data.name }}
+                  </h1>
+                  <p>{{ data.description }}</p>
+                </div>
                 <div class="infoImg-wrapper">
                   <img :src="data.img" alt="imgMock" />
                 </div>
@@ -209,14 +212,15 @@ export default defineComponent({
 
 .navMenu-item {
   background: none;
-  border-right: solid #363636 1px;
   width: 420px;
   margin-left: 3rem;
   padding-bottom: 1rem;
-
+  border-right: solid #363636 1px;
+  height: auto;
   &.navMenu-item a {
     background: none;
     color: black;
+
     text-decoration: none;
     font-size: 1.7rem;
 
@@ -232,7 +236,9 @@ export default defineComponent({
   left: 40%;
   top: 30%;
   & img {
-    width: 720px;
+    background: none;
+    width: 450px;
+    height: px;
   }
 }
 
@@ -245,24 +251,31 @@ export default defineComponent({
 
 .infoComponents {
   display: flex;
-
   background: none;
-
-  & p {
-    background: none;
-    color: black;
-    font-size: 1.7rem;
-    width: 700px;
-    padding-top: 5rem;
-    height: auto;
-    line-height: 2.5rem;
+  & .infoText-wrapper {
+    padding-left: 1rem;
     padding-bottom: 2rem;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
+    & h1 {
+      padding-top: 1rem;
+    }
+    & p {
+      background: none;
+      color: white;
+      font-size: 1.2rem;
+      width: 700px;
+      padding-top: 7rem;
+      height: auto;
+      line-height: 2rem;
+    }
   }
 
   & .infoImg-wrapper {
     background: none;
     margin-left: 1rem;
-    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 1rem;
 
     & img {
       background: none;

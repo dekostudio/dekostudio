@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="546e6e10-1ac7-4f7a-aaac-1cf327cfbde3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/gifs/ezgif.com-gif-maker (3).gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/components/Pages/Offer.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/app.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/src/components/Pages/main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/Pages/main.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/app/router.options.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/app/router.options.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dekolanding/src/components/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/header.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,11 +71,11 @@
       <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets\gifs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets\gifs" />
       <recent name="D:\OSPanel\domains\dekostudio\dekolanding\public" />
       <recent name="D:\OSPanel\domains\dekostudio\dekolanding" />
       <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets\mainSectionBackground" />
       <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets" />
-      <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets\mockPics" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -93,6 +93,9 @@
       <workItem from="1698935157388" duration="199000" />
       <workItem from="1698944894964" duration="1150000" />
       <workItem from="1698994691647" duration="10110000" />
+      <workItem from="1699005677175" duration="255000" />
+      <workItem from="1699020599220" duration="233000" />
+      <workItem from="1699084964476" duration="6264000" />
     </task>
     <servers />
   </component>
