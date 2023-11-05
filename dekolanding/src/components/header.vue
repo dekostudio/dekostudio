@@ -1,5 +1,8 @@
 <script lang="ts">
+import Contact from "~/src/components/contact.vue";
+
 export default defineComponent({
+  components: { Contact },
   data() {
     return {
       active: false,
@@ -41,12 +44,16 @@ export default defineComponent({
       ],
       data: {},
       hoveredData: false,
+      activeMascot: true,
+      contactWindowActive: false,
     };
   },
+
   methods: {
     CheckId(id: number): void {
       this.data = this.navItems[id];
       this.hoveredData = true;
+      this.activeMascot = false;
     },
   },
 });
@@ -60,12 +67,12 @@ export default defineComponent({
           <h1>DEKO</h1>
         </div>
         <div class="menu-item">
-          <button @click="active = true">
+          <button @click="(active = true), (activeMascot = true)">
             <img src="../assets/icons/burgermenu.svg" />
           </button>
         </div>
         <div class="contact-item">
-          <button>Связаться</button>
+          <button @click="this.contactWindowActive = true">Связаться</button>
         </div>
       </div>
     </div>
@@ -73,23 +80,37 @@ export default defineComponent({
       <div class="navMenu" v-if="active">
         <div class="navMenu-components">
           <div class="navMenu-btnContainer">
-            <button @click="(active = false), (hoveredData = false)">
+            <button
+              @click="
+                (active = false), (hoveredData = false), (activeMascot = false)
+              "
+            >
               <img src="../assets/icons/eixt.svg" />
             </button>
           </div>
-          <div class="navMenu-item" v-for="(elem, key) in navItems" :key="key">
-            <a :href="elem.link" @mouseover="CheckId(key)">
-              {{ elem.name }}
-            </a>
-          </div>
+          <transition-group name="appearLinks" appear>
+            <div
+              class="navMenu-item"
+              v-for="(elem, key) in navItems"
+              :key="key"
+            >
+              <a
+                :href="elem.link"
+                @mouseover="CheckId(key)"
+                @mouseleave="this.hoveredData = false"
+              >
+                {{ elem.name }}
+              </a>
+            </div>
 
-          <div class="showcase" v-if="!hoveredData">
-            <img src="../assets/gifs/ezgif.com-gif-maker%20(3).gif" />
-          </div>
-          <div class="additionalInfo" v-if="hoveredData">
-            <transition name="dataShowUp" appear>
+            <div class="showcase" v-if="!hoveredData && activeMascot">
+              <img src="../assets/gifs/ezgif.com-gif-maker (3).gif" />
+            </div>
+          </transition-group>
+          <transition name="dataShowUp" appear>
+            <div class="additionalInfo" v-if="hoveredData" ref="info">
               <div class="infoComponents" v-show="data">
-                <div v-if="hoveredData" class="infoText-wrapper">
+                <div class="infoText-wrapper">
                   <h1>
                     {{ data.name }}
                   </h1>
@@ -99,10 +120,13 @@ export default defineComponent({
                   <img :src="data.img" alt="imgMock" />
                 </div>
               </div>
-            </transition>
-          </div>
+            </div>
+          </transition>
         </div>
       </div>
+    </transition>
+    <transition name="contactTransition">
+      <contact v-if="contactWindowActive" />
     </transition>
   </header>
 </template>
@@ -295,7 +319,7 @@ export default defineComponent({
 @keyframes EnterActive {
   from {
     opacity: 0;
-    transform: translateY(-10%);
+    transform: translateY(-100%);
   }
   to {
     opacity: 1;
@@ -305,38 +329,44 @@ export default defineComponent({
 
 @keyframes LeaveActive {
   from {
-    opacity: 0;
-    transform: translateY(-10%);
+    opacity: 1;
+    transform: translateY(0);
   }
   to {
-    opacity: 1;
+    opacity: 0;
     transform: translateY(-100%);
   }
 }
 
 .dataShowUp-enter-active {
   animation: EnterShowUp 0.3s ease-in-out;
+  transition: all 0.3s;
 }
 
 .dataShowUp-leave-to {
   animation: LeaveShowUp 0.3s ease-in-out;
+  transition: all 0.3s;
 }
 
-@keyframes EnterShowUp {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.dataShowUp-enter-active,
+.dataShowUp-leave-active {
+  transition: opacity 1s ease;
 }
 
-@keyframes LeaveShowUp {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+.dataShowUp-enter-from,
+.dataShowUp-leave-to {
+  opacity: 0;
+}
+.appearLinks-enter-active,
+.appearLinks-leave-active {
+  transition: opacity 0.5s ease;
+}
+.appearLinks-enter-from,
+.appearLinks-leave-to {
+  opacity: 0;
+}
+.contactTransition-enter-active {
+  animation: EnterShowUp 0.3s ease-in-out;
+  transition: all 0.3s;
 }
 </style>

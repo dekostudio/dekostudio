@@ -1,10 +1,16 @@
 <script lang="ts">
-export default defineComponent({});
+export default defineComponent({
+  data() {
+    return {
+      active: true,
+    };
+  },
+});
 </script>
 
 <template>
-  <section class="welcomeSection-wrapper">
-    <transition name="words_showUp" appear>
+  <transition name="words_showUp" appear>
+    <section class="welcomeSection-wrapper" v-if="active">
       <div class="welcomeSection-backWords">
         <div class="D">
           <img src="../../assets/mainSectionBackground/D.png" />
@@ -19,19 +25,20 @@ export default defineComponent({});
           <img src="../../assets/mainSectionBackground/o.png" />
         </div>
       </div>
-    </transition>
-    <div class="welcomeSection">
-      <div class="welcomeSection-content">
-        <div class="welcomeSection-content-text">
-          <h1>Мы - креативная команда</h1>
-          <p>разрабатываем то,что умножает Вашу прибыль</p>
-        </div>
-        <div class="welcomeSection-contentBtn">
-          <button>ЗАКАЗАТЬ ПРОЕКТ</button>
+
+      <div class="welcomeSection">
+        <div class="welcomeSection-content">
+          <div class="welcomeSection-content-text">
+            <h1>Мы - креативная команда</h1>
+            <p>разрабатываем то,что умножает Вашу прибыль</p>
+          </div>
+          <div class="welcomeSection-contentBtn">
+            <button>ЗАКАЗАТЬ ПРОЕКТ</button>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </transition>
 </template>
 
 <style scoped>
