@@ -1,22 +1,92 @@
 <script lang="ts">
+type Items = {
+  name: string;
+};
+interface items {
+  Items: Array<Items>;
+}
+interface item {
+  item: string[];
+  active: boolean;
+}
+
+export const items = (): items => ({
+  Items: [
+    {
+      name: "UX/UI",
+    },
+    {
+      name: "Разработка платформы",
+    },
+    {
+      name: "Разработка сайтов",
+    },
+    {
+      name: "Разработка чат-ботов",
+    },
+    {
+      name: "Лендинг",
+    },
+    {
+      name: "Интернет магазин",
+    },
+    {
+      name: "Сервис",
+    },
+    {
+      name: "Графический дизайн",
+    },
+  ],
+});
+export const item = (): item => ({
+  item: [],
+  active: false,
+});
 export default defineComponent({
   data() {
     return {
-      Items: [
-        {
-          name: "UX/UI",
-        },
-        {
-          name: "Разработка платформы",
-        },
-        {
-          name: "Разработка сайтов",
-        },
-        {
-          name: "Разработка чат-ботов",
-        },
-      ],
+      Items: items().Items,
+      item: item().item,
+      active: item().active,
     };
+  },
+  methods: {
+    ///adding to category
+    categoryStore: function (id: number) {
+      const category = this.$refs.category as HTMLButtonElement;
+      this.item.push(this.Items[id].name);
+      localStorage.setItem("Category", JSON.stringify(this.item));
+      category[id].style.backgroundColor = "black";
+      category[id].style.color = "white";
+      this.active = true;
+    },
+
+    ///deleting from category
+    categoryUnstore: function (id: number) {
+      const category = this.$refs.category as HTMLButtonElement;
+      const storedItems = localStorage.getItem("Category");
+
+      if (storedItems) {
+        let co = JSON.parse(storedItems);
+        const categoryName = this.Items[id].name;
+
+        const index = co.indexOf(categoryName);
+        if (index !== -1) {
+          co.splice(index, 1);
+          localStorage.setItem("Category", JSON.stringify(co));
+        }
+      }
+      category[id].style.backgroundColor = "white";
+      category[id].style.color = "black";
+      this.active = false;
+    },
+    toggle: function (id: number) {
+      if (!this.active) {
+        this.categoryStore(id);
+      } else {
+        this.categoryUnstore(id);
+      }
+    },
   },
 });
 </script>
@@ -43,7 +113,7 @@ export default defineComponent({
             v-for="(item, key) in Items"
             :key="key"
           >
-            <button>
+            <button @click="toggle(key)" ref="category">
               {{ item.name }}
             </button>
           </div>
