@@ -28,6 +28,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2XZMlfoTHoxQH6WwxD05HCqDg9i" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -53,7 +56,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Smugg\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
     &quot;ts.external.directory.path&quot;: &quot;D:\\WebStorm 2023.1.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -101,6 +104,12 @@
       <workItem from="1699195716523" duration="2000" />
       <workItem from="1699197857924" duration="7613000" />
       <workItem from="1699255339845" duration="14300000" />
+      <workItem from="1699270364897" duration="45000" />
+      <workItem from="1699274601369" duration="55000" />
+      <workItem from="1699361682320" duration="24000" />
+      <workItem from="1699361845581" duration="109000" />
+      <workItem from="1699362034649" duration="8430000" />
+      <workItem from="1699382304832" duration="2103000" />
     </task>
     <servers />
   </component>

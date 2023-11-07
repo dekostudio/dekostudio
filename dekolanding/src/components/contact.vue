@@ -2,12 +2,14 @@
 type Items = {
   name: string;
 };
+
 interface items {
   Items: Array<Items>;
 }
+
 interface item {
   item: string[];
-  active: boolean;
+  count: number;
 }
 
 export const items = (): items => ({
@@ -40,29 +42,29 @@ export const items = (): items => ({
 });
 export const item = (): item => ({
   item: [],
-  active: false,
+  count: 0,
 });
 export default defineComponent({
   data() {
     return {
       Items: items().Items,
       item: item().item,
-      active: item().active,
+      count: item().count,
     };
   },
   methods: {
     ///adding to category
-    categoryStore: function (id: number) {
+    categoryStore: function (id: number): void {
       const category = this.$refs.category as HTMLButtonElement;
       this.item.push(this.Items[id].name);
       localStorage.setItem("Category", JSON.stringify(this.item));
+
       category[id].style.backgroundColor = "black";
       category[id].style.color = "white";
-      this.active = true;
     },
 
     ///deleting from category
-    categoryUnstore: function (id: number) {
+    categoryUnstore: function (id: number): void {
       const category = this.$refs.category as HTMLButtonElement;
       const storedItems = localStorage.getItem("Category");
 
@@ -78,13 +80,16 @@ export default defineComponent({
       }
       category[id].style.backgroundColor = "white";
       category[id].style.color = "black";
-      this.active = false;
     },
-    toggle: function (id: number) {
-      if (!this.active) {
-        this.categoryStore(id);
-      } else {
+    toggle: function (id: number): void {
+      const category = this.$refs.category as HTMLButtonElement;
+
+      if (Number.parseInt(category[id].getAttribute("data-status")) == 1) {
         this.categoryUnstore(id);
+        category[id].setAttribute("data-status", "0");
+      } else {
+        this.categoryStore(id);
+        category[id].setAttribute("data-status", "1");
       }
     },
   },
@@ -113,7 +118,13 @@ export default defineComponent({
             v-for="(item, key) in Items"
             :key="key"
           >
-            <button @click="toggle(key)" ref="category">
+            <button
+              :key="key"
+              :data-id="key"
+              :data-status="0"
+              @click="toggle(key)"
+              ref="category"
+            >
               {{ item.name }}
             </button>
           </div>
@@ -129,6 +140,7 @@ export default defineComponent({
   margin: 0;
   box-sizing: border-box;
 }
+
 .contactWindow-wrapper {
   position: absolute;
   top: 0;
@@ -137,10 +149,12 @@ export default defineComponent({
   width: 100%;
   background: none;
 }
+
 .contactWindow {
   background: white;
   height: auto;
   padding-bottom: 2rem;
+
   & .contactWindow-header {
     display: flex;
     flex-direction: row;
@@ -148,12 +162,14 @@ export default defineComponent({
     background: none;
     padding: 5rem 2rem 2rem;
     gap: 2rem;
+
     & h1 {
       background: none;
       color: black;
       padding-top: 1rem;
       font-size: 3rem;
     }
+
     & p {
       background: black;
       color: white;
@@ -162,33 +178,40 @@ export default defineComponent({
       line-height: 1.5rem;
     }
   }
+
   & p {
     background: none;
     color: black;
     padding-left: 28rem;
   }
+
   & .contactWindow-categoryToOrder {
     background: none;
+
     & .categoryToOrder-header {
       background: none;
       margin-left: 28.5rem;
       margin-top: 3rem;
+
       & h4 {
         background: none;
         color: black;
       }
     }
   }
+
   & .categoryToOrder-wrapper {
     margin-top: 2rem;
     display: grid;
     grid-template-columns: 320px 320px 320px;
     gap: 2rem;
     background: none;
+
     & .categoryToOrder-items {
       margin-left: 28rem;
 
       background: none;
+
       & button {
         padding: 1rem;
         background: black;
@@ -197,6 +220,7 @@ export default defineComponent({
         background: none;
         color: black;
         border: 1px solid black;
+
         &:hover {
           background: black;
           color: white;
