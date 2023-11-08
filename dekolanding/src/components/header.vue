@@ -64,7 +64,7 @@ export default defineComponent({
     <div class="navbar">
       <div class="nav-items">
         <div class="logo-item">
-          <h1>DEKO</h1>
+          <NuxtLink to="/"><h1>DEKO</h1></NuxtLink>
         </div>
         <div class="menu-item">
           <button @click="(active = true), (activeMascot = true)">
@@ -72,7 +72,7 @@ export default defineComponent({
           </button>
         </div>
         <div class="contact-item">
-          <button @click="this.contactWindowActive = true">Связаться</button>
+          <NuxtLink to="/contact">Связаться</NuxtLink>
         </div>
       </div>
     </div>
@@ -125,9 +125,6 @@ export default defineComponent({
         </div>
       </div>
     </transition>
-    <transition name="contactTransition">
-      <contact v-if="contactWindowActive" />
-    </transition>
   </header>
 </template>
 <style scoped>
@@ -136,6 +133,7 @@ export default defineComponent({
   margin: 0;
   box-sizing: border-box;
   color: #ffffff;
+  background: black;
   font-family: Roboto;
   z-index: 2;
   -webkit-touch-callout: none;
@@ -182,11 +180,14 @@ export default defineComponent({
 .contact-item {
   display: flex;
   padding-top: 0.2rem;
-  & button {
+  & a {
     border: 1px solid white;
     width: 12rem;
     font-size: 1.1rem;
     height: 2.7rem;
+    text-decoration: none;
+    padding-left: 3rem;
+    padding-top: 0.5rem;
     &:hover {
       transition: all 300ms ease-out;
       transform: scale(110%);
@@ -195,6 +196,13 @@ export default defineComponent({
 }
 
 .logo-item {
+  & a {
+    text-decoration: none;
+    :hover {
+      transition: all 300ms ease-out;
+      transform: scale(110%);
+    }
+  }
   font-size: 1.22rem;
 }
 

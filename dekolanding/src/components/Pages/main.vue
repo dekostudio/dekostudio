@@ -45,6 +45,7 @@ export default defineComponent({
 * {
   padding: 0;
   margin: 0;
+  background: black;
   box-sizing: border-box;
   font-family: Roboto;
   -webkit-touch-callout: none;

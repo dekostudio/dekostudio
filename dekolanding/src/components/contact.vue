@@ -9,7 +9,9 @@ interface items {
 
 interface item {
   item: string[];
-  count: number;
+}
+interface formController {
+  chosen: boolean;
 }
 
 export const items = (): items => ({
@@ -42,30 +44,34 @@ export const items = (): items => ({
 });
 export const item = (): item => ({
   item: [],
-  count: 0,
+});
+export const formController = (): formController => ({
+  chosen: false,
 });
 export default defineComponent({
   data() {
     return {
       Items: items().Items,
       item: item().item,
-      count: item().count,
+      chosen: formController().chosen,
     };
   },
   methods: {
     ///adding to category
     categoryStore: function (id: number): void {
-      const category = this.$refs.category as HTMLButtonElement;
-      this.item.push(this.Items[id].name);
-      localStorage.setItem("Category", JSON.stringify(this.item));
-
+      const category = this.$refs.category as Array<HTMLButtonElement>;
       category[id].style.backgroundColor = "black";
       category[id].style.color = "white";
+
+      this.item.push(this.Items[id].name);
+      localStorage.setItem("Category", JSON.stringify(this.item));
     },
 
     ///deleting from category
     categoryUnstore: function (id: number): void {
-      const category = this.$refs.category as HTMLButtonElement;
+      const category = this.$refs.category as Array<HTMLButtonElement>;
+      category[id].style.backgroundColor = "white";
+      category[id].style.color = "black";
       const storedItems = localStorage.getItem("Category");
 
       if (storedItems) {
@@ -78,19 +84,48 @@ export default defineComponent({
           localStorage.setItem("Category", JSON.stringify(co));
         }
       }
-      category[id].style.backgroundColor = "white";
-      category[id].style.color = "black";
     },
-    toggle: function (id: number): void {
-      const category = this.$refs.category as HTMLButtonElement;
 
-      if (Number.parseInt(category[id].getAttribute("data-status")) == 1) {
+    ///toggles the logic for adding and deleting from local storage
+    toggle: function (id: number): void {
+      const category = this.$refs.category as Array<HTMLButtonElement>;
+
+      if (
+        Number.parseInt(category[id].getAttribute("data-status") || " ") == 1
+      ) {
         this.categoryUnstore(id);
         category[id].setAttribute("data-status", "0");
       } else {
         this.categoryStore(id);
         category[id].setAttribute("data-status", "1");
       }
+    },
+
+    /// fixes hover bugs with css
+    hoverProperty: function (id: number): void {
+      const category = this.$refs.category as Array<HTMLButtonElement>;
+      if (
+        Number.parseInt(category[id].getAttribute("data-status") || " ") == 0
+      ) {
+        category[id].style.backgroundColor = "black";
+        category[id].style.color = "white";
+        category[id].style.transition = "all 0.3s ";
+      }
+    },
+    leaveHoverState: function (id: number): void {
+      const category = this.$refs.category as Array<HTMLButtonElement>;
+      if (
+        Number.parseInt(category[id].getAttribute("data-status") || " ") == 0
+      ) {
+        category[id].style.backgroundColor = "white";
+        category[id].style.color = "black";
+        category[id].style.transition = "all 0.3s ";
+      }
+    },
+    fileChosen: function (): void {
+      const fileInput = this.$refs.input as HTMLInputElement;
+      const fileChosen = this.$refs.file as HTMLSpanElement;
+      fileChosen.textContent = fileInput.files[0].name;
     },
   },
 });
@@ -124,10 +159,36 @@ export default defineComponent({
               :data-status="0"
               @click="toggle(key)"
               ref="category"
+              @mouseover="hoverProperty(key)"
+              @mouseleave="leaveHoverState(key)"
             >
               {{ item.name }}
             </button>
           </div>
+        </div>
+      </div>
+      <div class="contactWindow-projectDescription">
+        <div class="projectDescription-header">
+          <h1>Опишите проект,не забудьте уточнить сроки</h1>
+        </div>
+        <div class="projectDescription-inputArea">
+          <textarea placeholder="Введите сообщение..."> </textarea>
+        </div>
+        <div class="projectDescription-attachBrief">
+          <div class="attachBrief-icon">
+            <img src="../assets/icons/clip-2-svgrepo-com.svg" />
+          </div>
+          <input
+            @change="fileChosen()"
+            id="brief"
+            type="file"
+            ref="input"
+            size="60"
+            hidden
+          />
+          <label for="brief">Прикрепить бриф или другой файл </label>
+          <!--          доделать условие-->
+          <span v-if="this.chosen" ref="file"></span>
         </div>
       </div>
     </div>
@@ -139,10 +200,18 @@ export default defineComponent({
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: Roboto;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .contactWindow-wrapper {
   position: absolute;
+  padding-top: 7rem;
   top: 0;
   left: 0;
   overflow-x: hidden;
@@ -220,11 +289,74 @@ export default defineComponent({
         background: none;
         color: black;
         border: 1px solid black;
+      }
+    }
+  }
+}
 
-        &:hover {
-          background: black;
-          color: white;
-        }
+.contactWindow-projectDescription {
+  background: none;
+  margin-top: 2rem;
+
+  & .projectDescription-header {
+    background: none;
+    padding-left: 28rem;
+
+    & h1 {
+      background: none;
+      font-size: 1rem;
+    }
+  }
+
+  & .projectDescription-inputArea {
+    background: none;
+    padding-left: 28rem;
+    padding-top: 1rem;
+
+    & textarea {
+      background: none;
+      resize: none;
+      width: 64rem;
+      height: 10rem;
+      padding-left: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      padding-top: 1rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  & .projectDescription-attachBrief {
+    background: none;
+    padding-left: 28rem;
+    margin-top: 1rem;
+    display: flex;
+
+    & label {
+      background: none;
+      color: black;
+      padding: 0.2rem;
+      cursor: pointer;
+      &:hover {
+        background: black;
+        color: white;
+        transition: all 0.2s;
+      }
+    }
+    & span {
+      background: black;
+      padding: 0.2rem;
+      color: white;
+      margin-left: 1rem;
+    }
+    & .attachBrief-icon {
+      padding-top: 0.1rem;
+      background: none;
+      & img {
+        background: none;
+        width: 20px;
       }
     }
   }

@@ -15,5 +15,11 @@ export default <RouterConfig>{
       component: () =>
         import("~/src/components/Pages/Offer.vue").then((r) => r.default || r),
     },
+    {
+      name: "contact",
+      path: "/contact",
+      component: () =>
+        import("~/src/components/contact.vue").then((r) => r.default || r),
+    },
   ],
 };

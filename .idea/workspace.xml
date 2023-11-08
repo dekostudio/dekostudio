@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="546e6e10-1ac7-4f7a-aaac-1cf327cfbde3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/icons/clip-2-svgrepo-com.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/app.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/app/router.options.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/app/router.options.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/layouts/default.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/nuxt.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/src/components/Pages/main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/Pages/main.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dekolanding/src/components/contact.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/contact.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/src/components/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/header.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +55,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/OSPanel/domains/dekostudio/dekolanding/src/assets/gifs&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/OSPanel/domains/dekostudio/dekolanding/src/assets/icons&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -68,6 +75,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets\icons" />
       <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets\gifs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -110,6 +118,11 @@
       <workItem from="1699361845581" duration="109000" />
       <workItem from="1699362034649" duration="8430000" />
       <workItem from="1699382304832" duration="2103000" />
+      <workItem from="1699384492932" duration="241000" />
+      <workItem from="1699426343041" duration="173000" />
+      <workItem from="1699426553074" duration="1426000" />
+      <workItem from="1699436600873" duration="11467000" />
+      <workItem from="1699453231358" duration="1732000" />
     </task>
     <servers />
   </component>

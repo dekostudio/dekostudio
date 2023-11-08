@@ -1,12 +1,10 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import Header from "~/src/components/header.vue";
 </script>
 
 <template>
-<Header/>
-  <slot/>
+  <Header />
+  <slot />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
