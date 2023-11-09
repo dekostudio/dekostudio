@@ -1,6 +1,6 @@
 <script lang="ts">
 import {fetch} from "ofetch";
-
+import emailjs from '@emailjs/browser';
 type Items = {
   name: string;
 };
@@ -395,7 +395,7 @@ export default defineComponent({
         dataArray.push(projectDescription.value);
       }
 
-      const briefForm = this.$refs.briefForm as HTMLFormElement;
+      // const briefForm = this.$refs.briefForm as HTMLFormElement;
 
       const greets = this.$refs.nameGreet as HTMLLabelElement;
       const name = this.$refs.name as HTMLInputElement;
@@ -431,11 +431,6 @@ export default defineComponent({
       }
       console.log(arr);
 
-      const formData = new FormData(briefForm);
-      formData.append('service_id', 'service_dm86uh2');
-      formData.append('template_id', 'template_5atatxw');
-      formData.append('user_id', 'y9yhsp0A0W9VwUYgv');
-
       try {
         const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
           method: "POST",
@@ -451,30 +446,17 @@ export default defineComponent({
         console.error("Error:", error);
       }
     },
+    sendEmail() {
+      const briefFrom=this.$refs.briefForm as HTMLFormElement;
+      emailjs.sendForm('service_dm86uh2', 'template_5atatxw', briefFrom, 'y9yhsp0A0W9VwUYgv')
+          .then((result) => {
+            console.log('SUCCESS!', result.text);
+          }, (error) => {
+            console.log('FAILED...', error.text);
+          });
   },
-  // mounted(){
-  //   const briefForm = this.$refs.briefForm as HTMLFormElement;
-  //   briefForm.addEventListener('submit',async (e)=>{
-  //     e.preventDefault();
-  //     let formData = new FormData(briefForm);
-  //
-  //     formData.append('service_id', 'service_dm86uh2');
-  //     formData.append('template_id', 'template_5atatxw');
-  //     formData.append('user_id', 'y9yhsp0A0W9VwUYgv');
-  //     try {
-  //       const response = await fetch("https://api.emailjs.com/api/v1.0/email/send-form", {
-  //         method: "POST",
-  //
-  //         body: formData,
-  //       });
-  //
-  //       const result = await response.json();
-  //       console.log("Success:", result);
-  //     } catch (error) {
-  //       console.error("Error:", error);
-  //     }
-  //   })
-  // },
+
+  },
 });
 </script>
 
@@ -521,7 +503,7 @@ export default defineComponent({
         <div class="projectDescription-inputArea">
           <textarea placeholder="Введите сообщение..." ref="projectDescription"> </textarea>
         </div>
-        <form enctype="multipart/form-data" ref="briefForm">
+        <form enctype="multipart/form-data" ref="briefForm" @submit.prevent="sendEmail()">
         <div class="projectDescription-attachBrief">
           <div class="attachBrief-icon">
             <img src="../assets/icons/clip-2-svgrepo-com.svg"/>
@@ -534,6 +516,7 @@ export default defineComponent({
               size="60"
               hidden
               name="file"
+
           />
           <label for="brief">Прикрепить бриф или другой файл </label>
           <!--          доделать условие-->
