@@ -213,6 +213,7 @@ export default defineComponent({
   left: 0;
   overflow-x: hidden;
   width: 100%;
+  box-shadow: 10px 10px 30px 20px rgba(0, 0, 0, 0.1);
 }
 
 .navMenu-components {

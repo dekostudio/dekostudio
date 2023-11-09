@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="546e6e10-1ac7-4f7a-aaac-1cf327cfbde3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/icons/clip-2-svgrepo-com.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/app.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/app/router.options.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/app/router.options.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/layouts/default.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/nuxt.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/src/components/Pages/main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/Pages/main.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dekolanding/src/components/contact.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/contact.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dekolanding/src/components/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/header.vue" afterDir="false" />
     </list>
@@ -123,6 +117,9 @@
       <workItem from="1699426553074" duration="1426000" />
       <workItem from="1699436600873" duration="11467000" />
       <workItem from="1699453231358" duration="1732000" />
+      <workItem from="1699455207344" duration="76000" />
+      <workItem from="1699462259510" duration="1935000" />
+      <workItem from="1699521232208" duration="12994000" />
     </task>
     <servers />
   </component>

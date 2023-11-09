@@ -2,17 +2,29 @@
 type Items = {
   name: string;
 };
-
+type formOfWork = {
+  name: string;
+};
+type budget = {
+  name: string;
+};
+type info = {
+  name: string;
+};
 interface items {
   Items: Array<Items>;
+  formOFWork: Array<formOfWork>;
+  budget: Array<budget>;
+  info: Array<info>;
 }
 
 interface item {
   item: string[];
+  workForm: string[];
+  budgetItem: string[];
+  infoItem: string[];
 }
-interface formController {
-  chosen: boolean;
-}
+interface formController {}
 
 export const items = (): items => ({
   Items: [
@@ -41,19 +53,70 @@ export const items = (): items => ({
       name: "Графический дизайн",
     },
   ],
+  formOFWork: [
+    {
+      name: "T&M по часам",
+    },
+    {
+      name: "Проект под ключ",
+    },
+    {
+      name: "Годовое сопровождение",
+    },
+  ],
+  budget: [
+    {
+      name: "менее 500 тыс.₽",
+    },
+    {
+      name: "500тыс-1,5 млн ₽",
+    },
+    {
+      name: "1,5 млн-3млн ₽",
+    },
+    {
+      name: "3млн-5млн ₽",
+    },
+    {
+      name: "более 5млн ₽",
+    },
+  ],
+  info: [
+    {
+      name: "Рейтинг",
+    },
+    {
+      name: "Рекомендации",
+    },
+    {
+      name: "CМИ",
+    },
+    {
+      name: "Cоциальные сети",
+    },
+    {
+      name: "Другое",
+    },
+  ],
 });
 export const item = (): item => ({
   item: [],
+  workForm: [],
+  budgetItem: [],
+  infoItem: [],
 });
-export const formController = (): formController => ({
-  chosen: false,
-});
+export const formController = (): formController => ({});
 export default defineComponent({
   data() {
     return {
       Items: items().Items,
       item: item().item,
-      chosen: formController().chosen,
+      formOFWork: items().formOFWork,
+      workForm: item().workForm,
+      budget: items().budget,
+      budgetItem: item().budgetItem,
+      info: items().info,
+      infoItem: item().infoItem,
     };
   },
   methods: {
@@ -125,7 +188,180 @@ export default defineComponent({
     fileChosen: function (): void {
       const fileInput = this.$refs.input as HTMLInputElement;
       const fileChosen = this.$refs.file as HTMLSpanElement;
+      if (!fileInput.files) return;
       fileChosen.textContent = fileInput.files[0].name;
+      fileChosen.style.backgroundColor = "black";
+    },
+    workFormStore: function (id: number): void {
+      const fromWork = this.$refs.workForm as Array<HTMLButtonElement>;
+      fromWork[id].style.backgroundColor = "black";
+      fromWork[id].style.color = "white";
+      this.workForm.push(this.formOFWork[id].name);
+      localStorage.setItem("FormatOFWork", JSON.stringify(this.workForm));
+    },
+    workFormUnStore: function (id: number): void {
+      const fromWork = this.$refs.workForm as Array<HTMLButtonElement>;
+      fromWork[id].style.backgroundColor = "white";
+      fromWork[id].style.color = "black";
+      const storedForm = localStorage.getItem("FormatOFWork");
+
+      if (storedForm) {
+        let form = JSON.parse(storedForm);
+        const formName = this.formOFWork[id].name;
+
+        const index = form.indexOf(formName);
+        if (index !== -1) {
+          form.splice(index, 1);
+          localStorage.setItem("FormatOFWork", JSON.stringify(form));
+        }
+      }
+    },
+    formWorkToggle: function (id: number): void {
+      const fromWork = this.$refs.workForm as Array<HTMLButtonElement>;
+
+      if (
+        Number.parseInt(fromWork[id].getAttribute("data-status") || " ") == 1
+      ) {
+        this.workFormUnStore(id);
+        fromWork[id].setAttribute("data-status", "0");
+      } else {
+        this.workFormStore(id);
+        fromWork[id].setAttribute("data-status", "1");
+      }
+    },
+    formWorkHoverProperty(id: number) {
+      const fromWork = this.$refs.workForm as Array<HTMLButtonElement>;
+      if (
+        Number.parseInt(fromWork[id].getAttribute("data-status") || " ") == 0
+      ) {
+        fromWork[id].style.backgroundColor = "black";
+        fromWork[id].style.color = "white";
+        fromWork[id].style.transition = "all 0.3s ";
+      }
+    },
+    formWorkLeaveHoverState(id: number) {
+      const fromWork = this.$refs.workForm as Array<HTMLButtonElement>;
+      if (
+        Number.parseInt(fromWork[id].getAttribute("data-status") || " ") == 0
+      ) {
+        fromWork[id].style.backgroundColor = "white";
+        fromWork[id].style.color = "black";
+        fromWork[id].style.transition = "all 0.3s ";
+      }
+    },
+    budgetStore: function (id: number): void {
+      const budgetArray = this.$refs.budgetArray as Array<HTMLButtonElement>;
+      budgetArray[id].style.backgroundColor = "black";
+      budgetArray[id].style.color = "white";
+      this.budgetItem.push(this.budget[id].name);
+      localStorage.setItem("budget", JSON.stringify(this.budgetItem));
+    },
+    budgetUnStore: function (id: number): void {
+      const budgetArray = this.$refs.budgetArray as Array<HTMLButtonElement>;
+      budgetArray[id].style.backgroundColor = "white";
+      budgetArray[id].style.color = "black";
+      const storedBudget = localStorage.getItem("budget");
+
+      if (storedBudget) {
+        let budg = JSON.parse(storedBudget);
+        const budgName = this.budget[id].name;
+
+        const index = budg.indexOf(budgName);
+        if (index !== -1) {
+          budg.splice(index, 1);
+          localStorage.setItem("budget", JSON.stringify(budg));
+        }
+      }
+    },
+    budgetToggle: function (id: number): void {
+      const budgetArray = this.$refs.budgetArray as Array<HTMLButtonElement>;
+
+      if (
+        Number.parseInt(budgetArray[id].getAttribute("data-status") || " ") == 1
+      ) {
+        this.budgetUnStore(id);
+        budgetArray[id].setAttribute("data-status", "0");
+      } else {
+        this.budgetStore(id);
+        budgetArray[id].setAttribute("data-status", "1");
+      }
+    },
+    budgetHoverProperty: function (id: number): void {
+      const budgetArray = this.$refs.budgetArray as Array<HTMLButtonElement>;
+      if (
+        Number.parseInt(budgetArray[id].getAttribute("data-status") || " ") == 0
+      ) {
+        budgetArray[id].style.backgroundColor = "black";
+        budgetArray[id].style.color = "white";
+        budgetArray[id].style.transition = "all 0.3s ";
+      }
+    },
+    budgetLeaveHoverState: function (id: number): void {
+      const budgetArray = this.$refs.budgetArray as Array<HTMLButtonElement>;
+      if (
+        Number.parseInt(budgetArray[id].getAttribute("data-status") || " ") == 0
+      ) {
+        budgetArray[id].style.backgroundColor = "white";
+        budgetArray[id].style.color = "black";
+        budgetArray[id].style.transition = "all 0.3s ";
+      }
+    },
+    infoStore: function (id: number): void {
+      const infoArray = this.$refs.infoArray as Array<HTMLButtonElement>;
+      infoArray[id].style.backgroundColor = "black";
+      infoArray[id].style.color = "white";
+      this.infoItem.push(this.info[id].name);
+      localStorage.setItem("info", JSON.stringify(this.infoItem));
+    },
+    infoUnStroe: function (id: number): void {
+      const infoArray = this.$refs.infoArray as Array<HTMLButtonElement>;
+      infoArray[id].style.backgroundColor = "white";
+      infoArray[id].style.color = "black";
+      const storedInfo = localStorage.getItem("info");
+
+      if (storedInfo) {
+        let inf = JSON.parse(storedInfo);
+        const infName = this.info[id].name;
+
+        const index = inf.indexOf(infName);
+        if (index !== -1) {
+          inf.splice(index, 1);
+          localStorage.setItem("info", JSON.stringify(inf));
+        }
+      }
+    },
+    infoToggle: function (id: number): void {
+      const infoArray = this.$refs.infoArray as Array<HTMLButtonElement>;
+
+      if (
+        Number.parseInt(infoArray[id].getAttribute("data-status") || " ") == 1
+      ) {
+        this.infoUnStroe(id);
+        infoArray[id].setAttribute("data-status", "0");
+      } else {
+        this.infoStore(id);
+        infoArray[id].setAttribute("data-status", "1");
+      }
+    },
+    infoHoverProperty: function (id: number): void {
+      const infoArray = this.$refs.infoArray as Array<HTMLButtonElement>;
+      if (
+        Number.parseInt(infoArray[id].getAttribute("data-status") || " ") == 0
+      ) {
+        infoArray[id].style.backgroundColor = "black";
+        infoArray[id].style.color = "white";
+        infoArray[id].style.transition = "all 0.3s ";
+      }
+    },
+    infoLeaveHoverState: function (id: number): void {
+      const infoArray = this.$refs.infoArray as Array<HTMLButtonElement>;
+      if (
+        Number.parseInt(infoArray[id].getAttribute("data-status") || " ") == 0
+      ) {
+        infoArray[id].style.backgroundColor = "white";
+        infoArray[id].style.color = "black";
+        infoArray[id].style.transition = "all 0.3s ";
+      }
     },
   },
 });
@@ -188,7 +424,101 @@ export default defineComponent({
           />
           <label for="brief">Прикрепить бриф или другой файл </label>
           <!--          доделать условие-->
-          <span v-if="this.chosen" ref="file"></span>
+          <span ref="file"></span>
+        </div>
+      </div>
+      <div class="contactWindow-formOfWork">
+        <div class="formOfWork-header">
+          <h4>Формат работы:</h4>
+        </div>
+        <div class="formOfWork-wrapper">
+          <div
+            class="formOfWork-items"
+            v-for="(item, key) in formOFWork"
+            :key="key"
+          >
+            <button
+              :key="key"
+              :data-id="key"
+              :data-status="0"
+              ref="workForm"
+              @click="formWorkToggle(key)"
+              @mouseover="formWorkHoverProperty(key)"
+              @mouseleave="formWorkLeaveHoverState(key)"
+            >
+              {{ item.name }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="contactWindow-budget">
+        <div class="budget-header">
+          <h4>Общий бюджет проекта:</h4>
+        </div>
+        <div class="budget-wrapper">
+          <div class="budget-items" v-for="(item, key) in budget" :key="key">
+            <button
+              :key="key"
+              :data-id="key"
+              :data-status="0"
+              ref="budgetArray"
+              @click="budgetToggle(key)"
+              @mouseover="budgetHoverProperty(key)"
+              @mouseleave="budgetLeaveHoverState(key)"
+            >
+              {{ item.name }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="contactWindow-customerInfo">
+        <div class="customerInfo-header">
+          <h1>Давайте познакомимся</h1>
+        </div>
+        <div class="customerInfo-form">
+          <div class="form-name">
+            <label>Привет меня зовут</label>
+            <input type="text" />
+          </div>
+          <div class="form-companyName">
+            <label>Я представляю компанию</label>
+            <input type="text" />
+          </div>
+          <div class="form-numberEmail">
+            <div class="form-number">
+              <label>Мой телефон</label>
+              <input type="text" />
+            </div>
+            <div class="form-email">
+              <label>Моя почта</label>
+              <input type="text" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contactWindow-info">
+        <div class="info-header">
+          <h4>Общий бюджет проекта:</h4>
+        </div>
+        <div class="info-wrapper">
+          <div class="info-items" v-for="(item, key) in info" :key="key">
+            <button
+              :key="key"
+              :data-id="key"
+              :data-status="0"
+              ref="infoArray"
+              @click="infoToggle(key)"
+              @mouseover="infoHoverProperty(key)"
+              @mouseleave="infoLeaveHoverState(key)"
+            >
+              {{ item.name }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="contactWindow-sendButton">
+        <div class="sendButton">
+          <button>Отправить запрос</button>
         </div>
       </div>
     </div>
@@ -346,7 +676,7 @@ export default defineComponent({
       }
     }
     & span {
-      background: black;
+      background: none;
       padding: 0.2rem;
       color: white;
       margin-left: 1rem;
@@ -357,6 +687,244 @@ export default defineComponent({
       & img {
         background: none;
         width: 20px;
+      }
+    }
+  }
+}
+.contactWindow-formOfWork {
+  background: none;
+
+  & .formOfWork-header {
+    background: none;
+    margin-left: 28.5rem;
+    margin-top: 3rem;
+
+    & h4 {
+      background: none;
+      color: black;
+    }
+  }
+  & .formOfWork-wrapper {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 320px 320px 320px;
+    gap: 2rem;
+    background: none;
+
+    & .formOfWork-items {
+      margin-left: 28rem;
+
+      background: none;
+
+      & button {
+        padding: 1rem;
+        background: black;
+        width: 20rem;
+        font-size: 1.5rem;
+        background: none;
+        color: black;
+        border: 1px solid black;
+      }
+    }
+  }
+}
+.contactWindow-budget {
+  background: none;
+
+  & .budget-header {
+    background: none;
+    margin-left: 28.5rem;
+    margin-top: 3rem;
+
+    & h4 {
+      background: none;
+      color: black;
+    }
+  }
+  & .budget-wrapper {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 320px 320px 320px;
+    gap: 2rem;
+    background: none;
+
+    & .budget-items {
+      margin-left: 28rem;
+      background: none;
+      & button {
+        padding: 1rem;
+        background: black;
+        width: 20rem;
+        font-size: 1.5rem;
+        background: none;
+        color: black;
+        border: 1px solid black;
+      }
+    }
+  }
+}
+.contactWindow-customerInfo {
+  background: none;
+  margin-left: 28rem;
+  margin-top: 2rem;
+  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  & .customerInfo-header {
+    background: none;
+    & h1 {
+      background: none;
+    }
+  }
+  & .customerInfo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: none;
+    & .form-name {
+      background: none;
+      & label {
+        background: none;
+
+        font-size: 1.2rem;
+      }
+      & input[type="text"] {
+        background: none;
+        border-bottom: 2px solid black;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        width: 35rem;
+        padding-left: 0.5rem;
+        font-weight: bold;
+        font-size: 1.2rem;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    & .form-companyName {
+      background: none;
+      & label {
+        background: none;
+
+        font-size: 1.2rem;
+      }
+      & input[type="text"] {
+        background: none;
+        border-bottom: 2px solid black;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        width: 35rem;
+        padding-left: 0.5rem;
+        font-weight: bold;
+        font-size: 1.2rem;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    & .form-numberEmail {
+      background: none;
+      display: flex;
+      & .form-number {
+        background: none;
+        & label {
+          background: none;
+
+          font-size: 1.2rem;
+        }
+        & input[type="text"] {
+          background: none;
+          border-bottom: 2px solid black;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          width: 20rem;
+          padding-left: 0.5rem;
+          font-weight: bold;
+          font-size: 1.2rem;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      & .form-email {
+        background: none;
+        & label {
+          background: none;
+
+          font-size: 1.2rem;
+        }
+        & input[type="text"] {
+          background: none;
+          border-bottom: 2px solid black;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          width: 20rem;
+          padding-left: 0.5rem;
+          font-weight: bold;
+          font-size: 1.2rem;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+}
+.contactWindow-info {
+  background: none;
+
+  & .info-header {
+    background: none;
+    margin-left: 28.5rem;
+    margin-top: 3rem;
+
+    & h4 {
+      background: none;
+      color: black;
+    }
+  }
+  & .info-wrapper {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 320px 320px 320px;
+    gap: 2rem;
+    background: none;
+
+    & .info-items {
+      margin-left: 28rem;
+      background: none;
+      & button {
+        padding: 1rem;
+        background: black;
+        width: 20rem;
+        font-size: 1.5rem;
+        background: none;
+        color: black;
+        border: 1px solid black;
+      }
+    }
+  }
+}
+.contactWindow-sendButton {
+  background: none;
+  margin-left: 28rem;
+  margin-top: 3rem;
+  & .sendButton {
+    background: none;
+    & button {
+      border: none;
+      background: black;
+      color: white;
+      font-size: 1.5rem;
+      padding: 1rem;
+      &:hover {
+        transition: all 0.3s;
+        transform: scale(110%);
       }
     }
   }
