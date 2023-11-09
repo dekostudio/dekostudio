@@ -1,4 +1,6 @@
 <script lang="ts">
+import {fetch} from "ofetch";
+
 type Items = {
   name: string;
 };
@@ -11,6 +13,7 @@ type budget = {
 type info = {
   name: string;
 };
+
 interface items {
   Items: Array<Items>;
   formOFWork: Array<formOfWork>;
@@ -24,7 +27,9 @@ interface item {
   budgetItem: string[];
   infoItem: string[];
 }
-interface formController {}
+
+interface formController {
+}
 
 export const items = (): items => ({
   Items: [
@@ -154,7 +159,7 @@ export default defineComponent({
       const category = this.$refs.category as Array<HTMLButtonElement>;
 
       if (
-        Number.parseInt(category[id].getAttribute("data-status") || " ") == 1
+          Number.parseInt(category[id].getAttribute("data-status") || " ") == 1
       ) {
         this.categoryUnstore(id);
         category[id].setAttribute("data-status", "0");
@@ -168,7 +173,7 @@ export default defineComponent({
     hoverProperty: function (id: number): void {
       const category = this.$refs.category as Array<HTMLButtonElement>;
       if (
-        Number.parseInt(category[id].getAttribute("data-status") || " ") == 0
+          Number.parseInt(category[id].getAttribute("data-status") || " ") == 0
       ) {
         category[id].style.backgroundColor = "black";
         category[id].style.color = "white";
@@ -178,7 +183,7 @@ export default defineComponent({
     leaveHoverState: function (id: number): void {
       const category = this.$refs.category as Array<HTMLButtonElement>;
       if (
-        Number.parseInt(category[id].getAttribute("data-status") || " ") == 0
+          Number.parseInt(category[id].getAttribute("data-status") || " ") == 0
       ) {
         category[id].style.backgroundColor = "white";
         category[id].style.color = "black";
@@ -220,7 +225,7 @@ export default defineComponent({
       const fromWork = this.$refs.workForm as Array<HTMLButtonElement>;
 
       if (
-        Number.parseInt(fromWork[id].getAttribute("data-status") || " ") == 1
+          Number.parseInt(fromWork[id].getAttribute("data-status") || " ") == 1
       ) {
         this.workFormUnStore(id);
         fromWork[id].setAttribute("data-status", "0");
@@ -232,7 +237,7 @@ export default defineComponent({
     formWorkHoverProperty(id: number) {
       const fromWork = this.$refs.workForm as Array<HTMLButtonElement>;
       if (
-        Number.parseInt(fromWork[id].getAttribute("data-status") || " ") == 0
+          Number.parseInt(fromWork[id].getAttribute("data-status") || " ") == 0
       ) {
         fromWork[id].style.backgroundColor = "black";
         fromWork[id].style.color = "white";
@@ -242,7 +247,7 @@ export default defineComponent({
     formWorkLeaveHoverState(id: number) {
       const fromWork = this.$refs.workForm as Array<HTMLButtonElement>;
       if (
-        Number.parseInt(fromWork[id].getAttribute("data-status") || " ") == 0
+          Number.parseInt(fromWork[id].getAttribute("data-status") || " ") == 0
       ) {
         fromWork[id].style.backgroundColor = "white";
         fromWork[id].style.color = "black";
@@ -277,7 +282,7 @@ export default defineComponent({
       const budgetArray = this.$refs.budgetArray as Array<HTMLButtonElement>;
 
       if (
-        Number.parseInt(budgetArray[id].getAttribute("data-status") || " ") == 1
+          Number.parseInt(budgetArray[id].getAttribute("data-status") || " ") == 1
       ) {
         this.budgetUnStore(id);
         budgetArray[id].setAttribute("data-status", "0");
@@ -289,7 +294,7 @@ export default defineComponent({
     budgetHoverProperty: function (id: number): void {
       const budgetArray = this.$refs.budgetArray as Array<HTMLButtonElement>;
       if (
-        Number.parseInt(budgetArray[id].getAttribute("data-status") || " ") == 0
+          Number.parseInt(budgetArray[id].getAttribute("data-status") || " ") == 0
       ) {
         budgetArray[id].style.backgroundColor = "black";
         budgetArray[id].style.color = "white";
@@ -299,7 +304,7 @@ export default defineComponent({
     budgetLeaveHoverState: function (id: number): void {
       const budgetArray = this.$refs.budgetArray as Array<HTMLButtonElement>;
       if (
-        Number.parseInt(budgetArray[id].getAttribute("data-status") || " ") == 0
+          Number.parseInt(budgetArray[id].getAttribute("data-status") || " ") == 0
       ) {
         budgetArray[id].style.backgroundColor = "white";
         budgetArray[id].style.color = "black";
@@ -334,7 +339,7 @@ export default defineComponent({
       const infoArray = this.$refs.infoArray as Array<HTMLButtonElement>;
 
       if (
-        Number.parseInt(infoArray[id].getAttribute("data-status") || " ") == 1
+          Number.parseInt(infoArray[id].getAttribute("data-status") || " ") == 1
       ) {
         this.infoUnStroe(id);
         infoArray[id].setAttribute("data-status", "0");
@@ -346,7 +351,7 @@ export default defineComponent({
     infoHoverProperty: function (id: number): void {
       const infoArray = this.$refs.infoArray as Array<HTMLButtonElement>;
       if (
-        Number.parseInt(infoArray[id].getAttribute("data-status") || " ") == 0
+          Number.parseInt(infoArray[id].getAttribute("data-status") || " ") == 0
       ) {
         infoArray[id].style.backgroundColor = "black";
         infoArray[id].style.color = "white";
@@ -356,14 +361,120 @@ export default defineComponent({
     infoLeaveHoverState: function (id: number): void {
       const infoArray = this.$refs.infoArray as Array<HTMLButtonElement>;
       if (
-        Number.parseInt(infoArray[id].getAttribute("data-status") || " ") == 0
+          Number.parseInt(infoArray[id].getAttribute("data-status") || " ") == 0
       ) {
         infoArray[id].style.backgroundColor = "white";
         infoArray[id].style.color = "black";
         infoArray[id].style.transition = "all 0.3s ";
       }
     },
+    sendData: async function () {
+      const dataArray = [];
+      const storedCategory = localStorage.getItem("Category");
+      if (storedCategory) {
+        let Category = JSON.parse(storedCategory);
+        dataArray.push(Category);
+      }
+      const workFormat = localStorage.getItem("FormatOFWork");
+      if (workFormat) {
+        let format = JSON.parse(workFormat);
+        dataArray.push(format);
+      }
+      const budgets = localStorage.getItem("budget");
+      if (budgets) {
+        let budget = JSON.parse(budgets);
+        dataArray.push(budget);
+      }
+      const storedInfo = localStorage.getItem("info");
+      if (storedInfo) {
+        let info = JSON.parse(storedInfo);
+        dataArray.push(info);
+      }
+      const projectDescription = this.$refs.projectDescription as HTMLTextAreaElement;
+      if (projectDescription) {
+        dataArray.push(projectDescription.value);
+      }
+
+      const briefForm = this.$refs.briefForm as HTMLFormElement;
+
+      const greets = this.$refs.nameGreet as HTMLLabelElement;
+      const name = this.$refs.name as HTMLInputElement;
+      if (name) {
+        dataArray.push(greets.textContent + " " + name.value);
+      }
+      const companyRepo = this.$refs.companyRepo as HTMLLabelElement;
+      const company = this.$refs.company as HTMLInputElement;
+      if (company) {
+        dataArray.push(companyRepo.textContent + " " + company.value);
+      }
+      const myNumber = this.$refs.myNumber as HTMLLabelElement;
+      const number = this.$refs.number as HTMLInputElement;
+      if (number) {
+        dataArray.push(myNumber.textContent + " " + number.value);
+      }
+      const myEmail = this.$refs.myEmail as HTMLLabelElement;
+      const email = this.$refs.email as HTMLInputElement;
+      if (email) {
+        dataArray.push(myEmail + " " + email.value);
+      }
+      console.log(dataArray);
+      const arr = {
+        service_id: "service_dm86uh2",
+        template_id: "template_5atatxw",
+        user_id: "y9yhsp0A0W9VwUYgv",
+        template_params: {
+          from_name: "ka11den",
+          from_email: "ka11denblin@gmail.com",
+          to_name: "wgwr",
+          messages: dataArray
+        },
+      }
+      console.log(arr);
+
+      const formData = new FormData(briefForm);
+      formData.append('service_id', 'service_dm86uh2');
+      formData.append('template_id', 'template_5atatxw');
+      formData.append('user_id', 'y9yhsp0A0W9VwUYgv');
+
+      try {
+        const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(arr),
+        });
+
+        const result = await response.json();
+        console.log("Success:", result);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    },
   },
+  // mounted(){
+  //   const briefForm = this.$refs.briefForm as HTMLFormElement;
+  //   briefForm.addEventListener('submit',async (e)=>{
+  //     e.preventDefault();
+  //     let formData = new FormData(briefForm);
+  //
+  //     formData.append('service_id', 'service_dm86uh2');
+  //     formData.append('template_id', 'template_5atatxw');
+  //     formData.append('user_id', 'y9yhsp0A0W9VwUYgv');
+  //     try {
+  //       const response = await fetch("https://api.emailjs.com/api/v1.0/email/send-form", {
+  //         method: "POST",
+  //
+  //         body: formData,
+  //       });
+  //
+  //       const result = await response.json();
+  //       console.log("Success:", result);
+  //     } catch (error) {
+  //       console.error("Error:", error);
+  //     }
+  //   })
+  // },
 });
 </script>
 
@@ -385,18 +496,18 @@ export default defineComponent({
         </div>
         <div class="categoryToOrder-wrapper">
           <div
-            class="categoryToOrder-items"
-            v-for="(item, key) in Items"
-            :key="key"
+              class="categoryToOrder-items"
+              v-for="(item, key) in Items"
+              :key="key"
           >
             <button
-              :key="key"
-              :data-id="key"
-              :data-status="0"
-              @click="toggle(key)"
-              ref="category"
-              @mouseover="hoverProperty(key)"
-              @mouseleave="leaveHoverState(key)"
+                :key="key"
+                :data-id="key"
+                :data-status="0"
+                @click="toggle(key)"
+                ref="category"
+                @mouseover="hoverProperty(key)"
+                @mouseleave="leaveHoverState(key)"
             >
               {{ item.name }}
             </button>
@@ -408,24 +519,28 @@ export default defineComponent({
           <h1>Опишите проект,не забудьте уточнить сроки</h1>
         </div>
         <div class="projectDescription-inputArea">
-          <textarea placeholder="Введите сообщение..."> </textarea>
+          <textarea placeholder="Введите сообщение..." ref="projectDescription"> </textarea>
         </div>
+        <form enctype="multipart/form-data" ref="briefForm">
         <div class="projectDescription-attachBrief">
           <div class="attachBrief-icon">
-            <img src="../assets/icons/clip-2-svgrepo-com.svg" />
+            <img src="../assets/icons/clip-2-svgrepo-com.svg"/>
           </div>
           <input
-            @change="fileChosen()"
-            id="brief"
-            type="file"
-            ref="input"
-            size="60"
-            hidden
+              @change="fileChosen()"
+              id="brief"
+              type="file"
+              ref="input"
+              size="60"
+              hidden
+              name="file"
           />
           <label for="brief">Прикрепить бриф или другой файл </label>
           <!--          доделать условие-->
           <span ref="file"></span>
         </div>
+<!--          <input type="submit" :style="{background:'white',color:'black'}">-->
+        </form>
       </div>
       <div class="contactWindow-formOfWork">
         <div class="formOfWork-header">
@@ -433,18 +548,18 @@ export default defineComponent({
         </div>
         <div class="formOfWork-wrapper">
           <div
-            class="formOfWork-items"
-            v-for="(item, key) in formOFWork"
-            :key="key"
+              class="formOfWork-items"
+              v-for="(item, key) in formOFWork"
+              :key="key"
           >
             <button
-              :key="key"
-              :data-id="key"
-              :data-status="0"
-              ref="workForm"
-              @click="formWorkToggle(key)"
-              @mouseover="formWorkHoverProperty(key)"
-              @mouseleave="formWorkLeaveHoverState(key)"
+                :key="key"
+                :data-id="key"
+                :data-status="0"
+                ref="workForm"
+                @click="formWorkToggle(key)"
+                @mouseover="formWorkHoverProperty(key)"
+                @mouseleave="formWorkLeaveHoverState(key)"
             >
               {{ item.name }}
             </button>
@@ -458,13 +573,13 @@ export default defineComponent({
         <div class="budget-wrapper">
           <div class="budget-items" v-for="(item, key) in budget" :key="key">
             <button
-              :key="key"
-              :data-id="key"
-              :data-status="0"
-              ref="budgetArray"
-              @click="budgetToggle(key)"
-              @mouseover="budgetHoverProperty(key)"
-              @mouseleave="budgetLeaveHoverState(key)"
+                :key="key"
+                :data-id="key"
+                :data-status="0"
+                ref="budgetArray"
+                @click="budgetToggle(key)"
+                @mouseover="budgetHoverProperty(key)"
+                @mouseleave="budgetLeaveHoverState(key)"
             >
               {{ item.name }}
             </button>
@@ -477,21 +592,21 @@ export default defineComponent({
         </div>
         <div class="customerInfo-form">
           <div class="form-name">
-            <label>Привет меня зовут</label>
-            <input type="text" />
+            <label ref="nameGreet">Привет меня зовут</label>
+            <input type="text" ref="name"/>
           </div>
           <div class="form-companyName">
-            <label>Я представляю компанию</label>
-            <input type="text" />
+            <label ref="companyRepo">Я представляю компанию</label>
+            <input type="text" ref="company"/>
           </div>
           <div class="form-numberEmail">
             <div class="form-number">
-              <label>Мой телефон</label>
-              <input type="text" />
+              <label ref="myNumber">Мой телефон</label>
+              <input type="text" ref="number"/>
             </div>
             <div class="form-email">
-              <label>Моя почта</label>
-              <input type="text" />
+              <label ref="myEmail">Моя почта</label>
+              <input ref="email" type="text"/>
             </div>
           </div>
         </div>
@@ -503,13 +618,13 @@ export default defineComponent({
         <div class="info-wrapper">
           <div class="info-items" v-for="(item, key) in info" :key="key">
             <button
-              :key="key"
-              :data-id="key"
-              :data-status="0"
-              ref="infoArray"
-              @click="infoToggle(key)"
-              @mouseover="infoHoverProperty(key)"
-              @mouseleave="infoLeaveHoverState(key)"
+                :key="key"
+                :data-id="key"
+                :data-status="0"
+                ref="infoArray"
+                @click="infoToggle(key)"
+                @mouseover="infoHoverProperty(key)"
+                @mouseleave="infoLeaveHoverState(key)"
             >
               {{ item.name }}
             </button>
@@ -518,7 +633,7 @@ export default defineComponent({
       </div>
       <div class="contactWindow-sendButton">
         <div class="sendButton">
-          <button>Отправить запрос</button>
+          <button @click="sendData()">Отправить запрос</button>
         </div>
       </div>
     </div>
@@ -658,6 +773,9 @@ export default defineComponent({
       }
     }
   }
+  & form{
+    background: none;
+  }
   & .projectDescription-attachBrief {
     background: none;
     padding-left: 28rem;
@@ -669,21 +787,25 @@ export default defineComponent({
       color: black;
       padding: 0.2rem;
       cursor: pointer;
+
       &:hover {
         background: black;
         color: white;
         transition: all 0.2s;
       }
     }
+
     & span {
       background: none;
       padding: 0.2rem;
       color: white;
       margin-left: 1rem;
     }
+
     & .attachBrief-icon {
       padding-top: 0.1rem;
       background: none;
+
       & img {
         background: none;
         width: 20px;
@@ -691,6 +813,7 @@ export default defineComponent({
     }
   }
 }
+
 .contactWindow-formOfWork {
   background: none;
 
@@ -704,6 +827,7 @@ export default defineComponent({
       color: black;
     }
   }
+
   & .formOfWork-wrapper {
     margin-top: 2rem;
     display: grid;
@@ -728,6 +852,7 @@ export default defineComponent({
     }
   }
 }
+
 .contactWindow-budget {
   background: none;
 
@@ -741,6 +866,7 @@ export default defineComponent({
       color: black;
     }
   }
+
   & .budget-wrapper {
     margin-top: 2rem;
     display: grid;
@@ -751,6 +877,7 @@ export default defineComponent({
     & .budget-items {
       margin-left: 28rem;
       background: none;
+
       & button {
         padding: 1rem;
         background: black;
@@ -763,6 +890,7 @@ export default defineComponent({
     }
   }
 }
+
 .contactWindow-customerInfo {
   background: none;
   margin-left: 28rem;
@@ -770,24 +898,30 @@ export default defineComponent({
   gap: 1.5rem;
   display: flex;
   flex-direction: column;
+
   & .customerInfo-header {
     background: none;
+
     & h1 {
       background: none;
     }
   }
+
   & .customerInfo-form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     background: none;
+
     & .form-name {
       background: none;
+
       & label {
         background: none;
 
         font-size: 1.2rem;
       }
+
       & input[type="text"] {
         background: none;
         border-bottom: 2px solid black;
@@ -798,18 +932,22 @@ export default defineComponent({
         padding-left: 0.5rem;
         font-weight: bold;
         font-size: 1.2rem;
+
         &:focus {
           outline: none;
         }
       }
     }
+
     & .form-companyName {
       background: none;
+
       & label {
         background: none;
 
         font-size: 1.2rem;
       }
+
       & input[type="text"] {
         background: none;
         border-bottom: 2px solid black;
@@ -820,21 +958,26 @@ export default defineComponent({
         padding-left: 0.5rem;
         font-weight: bold;
         font-size: 1.2rem;
+
         &:focus {
           outline: none;
         }
       }
     }
+
     & .form-numberEmail {
       background: none;
       display: flex;
+
       & .form-number {
         background: none;
+
         & label {
           background: none;
 
           font-size: 1.2rem;
         }
+
         & input[type="text"] {
           background: none;
           border-bottom: 2px solid black;
@@ -845,18 +988,22 @@ export default defineComponent({
           padding-left: 0.5rem;
           font-weight: bold;
           font-size: 1.2rem;
+
           &:focus {
             outline: none;
           }
         }
       }
+
       & .form-email {
         background: none;
+
         & label {
           background: none;
 
           font-size: 1.2rem;
         }
+
         & input[type="text"] {
           background: none;
           border-bottom: 2px solid black;
@@ -867,6 +1014,7 @@ export default defineComponent({
           padding-left: 0.5rem;
           font-weight: bold;
           font-size: 1.2rem;
+
           &:focus {
             outline: none;
           }
@@ -875,6 +1023,7 @@ export default defineComponent({
     }
   }
 }
+
 .contactWindow-info {
   background: none;
 
@@ -888,6 +1037,7 @@ export default defineComponent({
       color: black;
     }
   }
+
   & .info-wrapper {
     margin-top: 2rem;
     display: grid;
@@ -898,6 +1048,7 @@ export default defineComponent({
     & .info-items {
       margin-left: 28rem;
       background: none;
+
       & button {
         padding: 1rem;
         background: black;
@@ -910,18 +1061,22 @@ export default defineComponent({
     }
   }
 }
+
 .contactWindow-sendButton {
   background: none;
   margin-left: 28rem;
   margin-top: 3rem;
+
   & .sendButton {
     background: none;
+
     & button {
       border: none;
       background: black;
       color: white;
       font-size: 1.5rem;
       padding: 1rem;
+
       &:hover {
         transition: all 0.3s;
         transform: scale(110%);
