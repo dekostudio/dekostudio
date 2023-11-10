@@ -367,8 +367,7 @@ export default defineComponent({
         infoArray[id].style.color = "black";
         infoArray[id].style.transition = "all 0.3s ";
       }
-    },
-    sendData: async function () {
+    },    sendData: async function () {
       const dataArray = [];
       const storedCategory = localStorage.getItem("Category");
       if (storedCategory) {
@@ -454,7 +453,8 @@ export default defineComponent({
           }, (error) => {
             console.log('FAILED...', error.text);
           });
-  },
+    },
+
 
   },
 });
@@ -503,7 +503,7 @@ export default defineComponent({
         <div class="projectDescription-inputArea">
           <textarea placeholder="Введите сообщение..." ref="projectDescription"> </textarea>
         </div>
-        <form enctype="multipart/form-data" ref="briefForm" @submit.prevent="sendEmail()">
+        <form enctype="multipart/form-data" method="post" ref="briefForm" @submit.prevent="sendEmail()">
         <div class="projectDescription-attachBrief">
           <div class="attachBrief-icon">
             <img src="../assets/icons/clip-2-svgrepo-com.svg"/>
@@ -515,14 +515,14 @@ export default defineComponent({
               ref="input"
               size="60"
               hidden
-              name="file"
+              name="my_file"
 
           />
           <label for="brief">Прикрепить бриф или другой файл </label>
           <!--          доделать условие-->
           <span ref="file"></span>
         </div>
-<!--          <input type="submit" :style="{background:'white',color:'black'}">-->
+          <input type="submit" :style="{background:'white',color:'black'}">
         </form>
       </div>
       <div class="contactWindow-formOfWork">

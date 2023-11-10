@@ -1,31 +1,27 @@
 <script lang="ts">
+
+
 export default defineComponent({
-  data() {
-    return {
-      active: true,
-    };
-  },
+
 });
 </script>
 
 <template>
-  <transition name="words_showUp" appear>
-    <section class="welcomeSection-wrapper" v-if="active">
+    <section class="welcomeSection-wrapper">
       <div class="welcomeSection-backWords">
         <div class="D">
-          <img src="../../assets/mainSectionBackground/D.png" />
+          <img src="../../../assets/mainSectionBackground/D.png" />
         </div>
         <div class="E">
-          <img src="../../assets/mainSectionBackground/E.png" />
+          <img src="../../../assets/mainSectionBackground/E.png" />
         </div>
         <div class="K">
-          <img src="../../assets/mainSectionBackground/k.png" />
+          <img src="../../../assets/mainSectionBackground/k.png" />
         </div>
         <div class="O">
-          <img src="../../assets/mainSectionBackground/o.png" />
+          <img src="../../../assets/mainSectionBackground/o.png" />
         </div>
       </div>
-
       <div class="welcomeSection">
         <div class="welcomeSection-content">
           <div class="welcomeSection-content-text">
@@ -33,12 +29,11 @@ export default defineComponent({
             <p>разрабатываем то,что умножает Вашу прибыль</p>
           </div>
           <div class="welcomeSection-contentBtn">
-            <button>ЗАКАЗАТЬ ПРОЕКТ</button>
+            <NuxtLink to="/contact">ЗАКАЗАТЬ ПРОЕКТ</NuxtLink>
           </div>
         </div>
       </div>
     </section>
-  </transition>
 </template>
 
 <style scoped>
@@ -90,13 +85,15 @@ export default defineComponent({
   }
   & .welcomeSection-contentBtn {
     background: none;
-    & button {
+    & a {
       border: 1px solid white;
       background: none;
       color: white;
       width: 400px;
       height: 80px;
       font-size: 1.8em;
+      text-decoration: none;
+      padding: 1rem;
       &:hover {
         transition: all 300ms;
         transform: scale(110%);
@@ -156,10 +153,6 @@ export default defineComponent({
     }
   }
 }
-.words_showUp-enter-active {
-  animation: appear 0.3s ease-in-out;
-}
-
 @keyframes Danim {
   from {
     transform: translateY(0);
@@ -192,4 +185,5 @@ export default defineComponent({
     opacity: 1;
   }
 }
+
 </style>

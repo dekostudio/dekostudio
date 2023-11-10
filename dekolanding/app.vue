@@ -5,7 +5,9 @@
 </template>
 <style>
 * {
-  background: black;
+padding: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 .rout-enter-from,
 .rout-leave-to {
