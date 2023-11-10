@@ -5,15 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cbd3246-30d7-41bb-bf5a-980f2bc7676e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/dekolanding/src/components/Pages/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dekolanding/src/components/Pages/layers/service.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/icons/BtnNext.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/icons/btnPrev.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/assets/mockPics/unsplash_atBwiyYKTM8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/components/Carousel/Carousel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/components/Carousel/CarouselSlide.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/components/Pages/Footer.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/components/Pages/layers/All.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dekolanding/src/components/Pages/layers/ourWorks.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dekolanding/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/app.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/app/router.options.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/app/router.options.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dekolanding/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/layouts/default.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/src/components/Pages/Offer.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/src/components/Pages/main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/Pages/layers/main.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/nuxt.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/src/components/Pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/Pages/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekolanding/src/components/Pages/layers/service.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/Pages/layers/service.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dekolanding/src/components/contact.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/contact.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekolanding/src/components/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/dekolanding/src/components/header.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +62,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/OSPanel/domains/dekostudio/dekolanding/src/components/Carousel",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -70,7 +79,12 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\components\Carousel" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets\icons" />
+      <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\assets\mockPics" />
       <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\components\Pages\layers" />
       <recent name="D:\OSPanel\domains\dekostudio\dekolanding\src\components\Pages" />
     </key>
@@ -86,7 +100,7 @@
       <workItem from="1699537897497" duration="2185000" />
       <workItem from="1699545460562" duration="9115000" />
       <workItem from="1699554831585" duration="782000" />
-      <workItem from="1699598440153" duration="8335000" />
+      <workItem from="1699598440153" duration="27137000" />
     </task>
     <servers />
   </component>

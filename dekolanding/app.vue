@@ -18,4 +18,6 @@ padding: 0;
   transition: opacity 0.5s ease-out;
 }
 </style>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Footer from "~/src/components/Pages/Footer.vue";
+</script>

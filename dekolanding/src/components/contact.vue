@@ -414,7 +414,7 @@ export default defineComponent({
       const myEmail = this.$refs.myEmail as HTMLLabelElement;
       const email = this.$refs.email as HTMLInputElement;
       if (email) {
-        dataArray.push(myEmail + " " + email.value);
+        dataArray.push(myEmail.textContent + " " + email.value);
       }
       console.log(dataArray);
       const arr = {
@@ -445,16 +445,6 @@ export default defineComponent({
         console.error("Error:", error);
       }
     },
-    sendEmail() {
-      const briefFrom=this.$refs.briefForm as HTMLFormElement;
-      emailjs.sendForm('service_dm86uh2', 'template_5atatxw', briefFrom, 'y9yhsp0A0W9VwUYgv')
-          .then((result) => {
-            console.log('SUCCESS!', result.text);
-          }, (error) => {
-            console.log('FAILED...', error.text);
-          });
-    },
-
 
   },
 });
@@ -503,27 +493,27 @@ export default defineComponent({
         <div class="projectDescription-inputArea">
           <textarea placeholder="Введите сообщение..." ref="projectDescription"> </textarea>
         </div>
-        <form enctype="multipart/form-data" method="post" ref="briefForm" @submit.prevent="sendEmail()">
-        <div class="projectDescription-attachBrief">
-          <div class="attachBrief-icon">
-            <img src="../assets/icons/clip-2-svgrepo-com.svg"/>
-          </div>
-          <input
-              @change="fileChosen()"
-              id="brief"
-              type="file"
-              ref="input"
-              size="60"
-              hidden
-              name="my_file"
+<!--        <form enctype="multipart/form-data" method="post" ref="briefForm" @submit.prevent="sendEmail()">-->
+<!--        <div class="projectDescription-attachBrief">-->
+<!--          <div class="attachBrief-icon">-->
+<!--            <img src="../assets/icons/clip-2-svgrepo-com.svg"/>-->
+<!--          </div>-->
+<!--          <input-->
+<!--              @change="fileChosen()"-->
+<!--              id="brief"-->
+<!--              type="file"-->
+<!--              ref="input"-->
+<!--              size="60"-->
+<!--              hidden-->
+<!--              name="my_file"-->
 
-          />
-          <label for="brief">Прикрепить бриф или другой файл </label>
-          <!--          доделать условие-->
-          <span ref="file"></span>
-        </div>
-          <input type="submit" :style="{background:'white',color:'black'}">
-        </form>
+<!--          />-->
+<!--          <label for="brief">Прикрепить бриф или другой файл </label>-->
+<!--          &lt;!&ndash;          доделать условие&ndash;&gt;-->
+<!--          <span ref="file"></span>-->
+<!--        </div>-->
+<!--&lt;!&ndash;          <input type="submit" :style="{background:'white',color:'black'}">&ndash;&gt;-->
+<!--        </form>-->
       </div>
       <div class="contactWindow-formOfWork">
         <div class="formOfWork-header">
@@ -756,45 +746,7 @@ export default defineComponent({
       }
     }
   }
-  & form{
-    background: none;
-  }
-  & .projectDescription-attachBrief {
-    background: none;
-    padding-left: 28rem;
-    margin-top: 1rem;
-    display: flex;
 
-    & label {
-      background: none;
-      color: black;
-      padding: 0.2rem;
-      cursor: pointer;
-
-      &:hover {
-        background: black;
-        color: white;
-        transition: all 0.2s;
-      }
-    }
-
-    & span {
-      background: none;
-      padding: 0.2rem;
-      color: white;
-      margin-left: 1rem;
-    }
-
-    & .attachBrief-icon {
-      padding-top: 0.1rem;
-      background: none;
-
-      & img {
-        background: none;
-        width: 20px;
-      }
-    }
-  }
 }
 
 .contactWindow-formOfWork {
